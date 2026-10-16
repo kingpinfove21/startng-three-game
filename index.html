@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#b8e3bd" />
+    <meta name="description" content="A tiny 3D collection run through a moss-lit garden." />
+    <title>Mosslight Run</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <canvas id="scene" aria-label="Three-dimensional garden game scene"></canvas>
+      <div class="grain" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <a class="wordmark" href="./" aria-label="Mosslight Run home">
+          <span class="wordmark-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>FIELD NOTES <b>/ 01</b></span>
+        </a>
+        <div class="connection" id="connection-status" aria-live="polite">
+          <span class="connection-dot"></span>
+          <span id="connection-label">FINDING YOUR CHARACTER</span>
+        </div>
+      </header>
+
+      <section class="player-chip" aria-label="Player character">
+        <img class="player-face" id="player-face" alt="" hidden />
+        <span class="player-monogram" id="player-monogram" aria-hidden="true">G</span>
+        <span class="player-copy">
+          <span class="micro-label">YOUR RUNNER</span>
+          <strong id="player-name">Guest</strong>
+          <span id="player-account">LOCAL PREVIEW</span>
+        </span>
+        <a id="sign-in-link" class="sign-in-link" href="#" hidden>Sign in</a>
+      </section>
+
+      <section class="intro" id="intro-panel" aria-labelledby="game-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span> A LITTLE FIELD EXPEDITION</p>
+        <h1 id="game-title">Mosslight<br /><em>Run</em><span class="title-period">.</span></h1>
+        <p class="intro-copy">Six little lights. One winding garden.<br />Find them before the brambles find you.</p>
+        <button class="primary-button" id="start-button" type="button">
+          <span>Start your run</span><span class="button-arrow" aria-hidden="true">&#8599;</span>
+        </button>
+        <p class="key-hint">MOVE WITH <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> OR ARROW KEYS</p>
+      </section>
+
+      <section class="run-hud" id="run-hud" aria-live="polite" hidden>
+        <div class="hud-stat">
+          <span class="micro-label">GATHERED</span>
+          <strong><span id="score-count">00</span><small> / 06</small></strong>
+        </div>
+        <div class="hud-divider"></div>
+        <div class="hud-stat lives-stat">
+          <span class="micro-label">GARDEN GUARD</span>
+          <span class="life-dots" id="life-dots" aria-label="3 chances">
+            <i></i><i></i><i></i>
+          </span>
+        </div>
+      </section>
+
+      <section class="end-panel" id="end-panel" aria-live="polite" hidden>
+        <p class="eyebrow"><span class="eyebrow-line"></span><span id="end-kicker">EXPEDITION COMPLETE</span></p>
+        <h2 id="end-title">Well gathered.</h2>
+        <p class="intro-copy" id="end-copy">The garden is a little brighter now.</p>
+        <button class="primary-button" id="restart-button" type="button">
+          <span>Run it again</span><span class="button-arrow" aria-hidden="true">&#8599;</span>
+        </button>
+      </section>
+
+      <div class="touch-pad" id="touch-pad" aria-label="Movement controls" hidden>
+        <button type="button" data-key="ArrowUp" aria-label="Move up">&#8593;</button>
+        <button type="button" data-key="ArrowLeft" aria-label="Move left">&#8592;</button>
+        <button type="button" data-key="ArrowDown" aria-label="Move down">&#8595;</button>
+        <button type="button" data-key="ArrowRight" aria-label="Move right">&#8594;</button>
+      </div>
+
+      <footer class="bottom-note">
+        <span>STAY LIGHT ON YOUR FEET</span>
+        <span class="bottom-note-mark" aria-hidden="true">M / R</span>
+      </footer>
+    </main>
+    <script type="module" src="./game.js"></script>
+  </body>
+</html>
